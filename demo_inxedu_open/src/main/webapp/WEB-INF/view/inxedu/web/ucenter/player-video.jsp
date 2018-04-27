@@ -216,6 +216,9 @@
 	<script src="/static/inxweb/comment/comment.js" type="text/javascript"></script><!-- 评论js -->
 	<script type="text/javascript" src="${ctx }/kindeditor/kindeditor-all.js"></script>
 	<script type="text/javascript" src="${ctx}/static/inxweb/play/playVideo.js"></script>
+	<%--监听--%>
+	<script type="text/javascript" src="${ctx}/static/common/ckplayer/ckplayer.js"></script>
+	<%--<script type="text/javascript" src="${ctx}/static/inxweb/play/videoListener.js"></script>--%>
 	
 	<script>
 	//评论课程id
@@ -229,6 +232,25 @@
 	var studyPercent="${course.studyPercent}";//学习进度百分比
 
 	getCourseKpointList("${course.courseId}",2);
+
+    // loadedHandler();
+    //
+    // function loadedHandler(id){
+    //     console.log(document.getElementById('ckplayer_a1'));
+    //     console.log(CKobject.getObjectById(id));
+    //     if(CKobject.getObjectById('ckplayer_a1').getType()){
+    //         alert('播放器已加载，调用的是HTML5播放模块');
+    //         CKobject.getObjectById(id).addListener('play',playHandler);
+    //     }
+    //     else{
+    //         alert('播放器已加载，调用的是Flash播放模块');
+    //         CKobject.getObjectById('videoPlay').addListener('play','playHandler');
+    //     }
+    // }
+    // function playHandler(){
+    //     alert('播放了');
+    // }
+
 	/**
 	 * 获得课程章节目录
 	 */

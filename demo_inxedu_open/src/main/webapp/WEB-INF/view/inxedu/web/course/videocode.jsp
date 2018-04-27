@@ -29,12 +29,29 @@
 	</c:when>
 	<c:when test="${videotype=='uploadVideo'}">
 		<script type="text/javascript" src="/static/common/ckplayer/ckplayer.js" charset="utf-8"></script>
+        <script type="text/javascript" src="/static/inxweb/play/videoListener.js" charset="utf-8"></script>
 		<div id="videoareaname" style="width: 100%;height: 100%"></div>
 		<script type="text/javascript">
+
+            // function loadedHandler(){
+            //     if(CKobject.getObjectById('ckplayer_a1').getType()){
+            //         alert('播放器已加载，调用的是HTML5播放模块');
+            //         CKobject.getObjectById('ckplayer_a1').addListener('play',playHandler);
+            //     }
+            //     else{
+            //         alert('播放器已加载，调用的是Flash播放模块');
+            //         CKobject.getObjectById('ckplayer_a1').addListener('play','playHandler');
+            //     }
+            // }
+            // function playHandler(){
+            //     alert('播放了');
+            // }
+
             var flashvars={
                 f:'${ctx}${videourl}',
                 c:0,
-                p:1
+                p:1,
+				loaded: 'loadedHandler'
             };
             var video=['${ctx}${videourl}->video/mp4'];
             CKobject.embed('/static/common/ckplayer/ckplayer.swf','videoareaname','ckplayer_a1','100%','100%',false,flashvars,video);
