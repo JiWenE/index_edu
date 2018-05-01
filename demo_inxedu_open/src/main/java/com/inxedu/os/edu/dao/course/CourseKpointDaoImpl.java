@@ -60,4 +60,8 @@ public class CourseKpointDaoImpl extends GenericDaoImpl implements CourseKpointD
 		return this.selectOne("CourseKpointMapper.getSecondLevelKpointCount", courseId);
 	}
 
+	@Override
+	public int getVideoIdByUrl(String url) {
+		return this.selectOne("CourseKpointMapper.getVideoIdByUrl", url);
+	}
 }

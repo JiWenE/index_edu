@@ -218,7 +218,7 @@
 	<script type="text/javascript" src="${ctx}/static/inxweb/play/playVideo.js"></script>
 	<%--监听--%>
 	<script type="text/javascript" src="${ctx}/static/common/ckplayer/ckplayer.js"></script>
-	<%--<script type="text/javascript" src="${ctx}/static/inxweb/play/videoListener.js"></script>--%>
+	<script type="text/javascript" src="${ctx}/static/inxweb/play/videoListener.js"></script>
 	
 	<script>
 	//评论课程id
@@ -232,6 +232,7 @@
 	var studyPercent="${course.studyPercent}";//学习进度百分比
 
 	getCourseKpointList("${course.courseId}",2);
+	//console.log('播放页面的log' + logArray);
 
     // loadedHandler();
     //

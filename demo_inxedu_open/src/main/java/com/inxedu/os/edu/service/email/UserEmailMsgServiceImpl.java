@@ -17,7 +17,7 @@ import java.util.*;
 /**
  * @author http://www.inxedu.com
  */
-@Service
+@Service("userEmailMsgService")
 public class UserEmailMsgServiceImpl implements UserEmailMsgService {
 	@Autowired
     private UserEmailMsgDao userEmailMsgDao;

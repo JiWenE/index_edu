@@ -33,19 +33,8 @@
 		<div id="videoareaname" style="width: 100%;height: 100%"></div>
 		<script type="text/javascript">
 
-            // function loadedHandler(){
-            //     if(CKobject.getObjectById('ckplayer_a1').getType()){
-            //         alert('播放器已加载，调用的是HTML5播放模块');
-            //         CKobject.getObjectById('ckplayer_a1').addListener('play',playHandler);
-            //     }
-            //     else{
-            //         alert('播放器已加载，调用的是Flash播放模块');
-            //         CKobject.getObjectById('ckplayer_a1').addListener('play','playHandler');
-            //     }
-            // }
-            // function playHandler(){
-            //     alert('播放了');
-            // }
+            // var logArray = [];
+
 
             var flashvars={
                 f:'${ctx}${videourl}',
@@ -55,6 +44,9 @@
             };
             var video=['${ctx}${videourl}->video/mp4'];
             CKobject.embed('/static/common/ckplayer/ckplayer.swf','videoareaname','ckplayer_a1','100%','100%',false,flashvars,video);
+
+            var logArray = [];
+
 		</script>
 	</c:when>
 	<c:otherwise>

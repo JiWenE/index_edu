@@ -24,7 +24,7 @@ import lombok.Setter;
  * StatisticsDayDay管理接口
  * @author www.inxedu.com
  */
-@Service
+@Service("statisticsDayService")
 public class StatisticsDayServiceImpl implements StatisticsDayService{
 
 	@Autowired

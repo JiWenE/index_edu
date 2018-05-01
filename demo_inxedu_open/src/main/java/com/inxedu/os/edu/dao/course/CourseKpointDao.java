@@ -54,4 +54,11 @@ public interface CourseKpointDao {
      */
     public int getSecondLevelKpointCount(Long courseId);
 
+    /**
+     * 通过视频url获取id
+     * @param url
+     * @return
+     */
+    public int getVideoIdByUrl(String url);
+
 }
