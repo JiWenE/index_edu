@@ -2184,7 +2184,7 @@
 	};
 
 	/**
-	 * Log error or data to the console during error or debugging
+	 * log error or data to the console during error or debugging
 	 * @param  {Object} err pass any type object to log to the console during error or debugging
 	 * @return {void}
 	 */

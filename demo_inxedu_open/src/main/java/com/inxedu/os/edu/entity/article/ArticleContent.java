@@ -16,4 +16,32 @@ public class ArticleContent implements Serializable{
 	private int articleId;
 	/**文章对应的内容*/
 	private String content;
+
+	public static long getSerialVersionUID() {
+		return serialVersionUID;
+	}
+
+	public int getArticleId() {
+		return articleId;
+	}
+
+	public void setArticleId(int articleId) {
+		this.articleId = articleId;
+	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public void setContent(String content) {
+		this.content = content;
+	}
+
+	@Override
+	public String toString() {
+		return "ArticleContent{" +
+				"articleId=" + articleId +
+				", content='" + content + '\'' +
+				'}';
+	}
 }

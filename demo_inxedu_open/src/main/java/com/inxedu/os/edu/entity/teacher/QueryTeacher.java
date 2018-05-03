@@ -26,4 +26,77 @@ public class QueryTeacher implements Serializable{
 	private Date beginCreateTime;//查询 开始时间
 	@DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")
 	private Date endCreateTime;//查询 结束时间
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getIsStar() {
+        return isStar;
+    }
+
+    public void setIsStar(int isStar) {
+        this.isStar = isStar;
+    }
+
+    public int getSubjectId() {
+        return subjectId;
+    }
+
+    public void setSubjectId(int subjectId) {
+        this.subjectId = subjectId;
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
+
+    public int getTeacherId() {
+        return teacherId;
+    }
+
+    public void setTeacherId(int teacherId) {
+        this.teacherId = teacherId;
+    }
+
+    public Date getBeginCreateTime() {
+        return beginCreateTime;
+    }
+
+    public void setBeginCreateTime(Date beginCreateTime) {
+        this.beginCreateTime = beginCreateTime;
+    }
+
+    public Date getEndCreateTime() {
+        return endCreateTime;
+    }
+
+    public void setEndCreateTime(Date endCreateTime) {
+        this.endCreateTime = endCreateTime;
+    }
+
+    @Override
+    public String toString() {
+        return "QueryTeacher{" +
+                "name='" + name + '\'' +
+                ", isStar=" + isStar +
+                ", subjectId=" + subjectId +
+                ", count=" + count +
+                ", teacherId=" + teacherId +
+                ", beginCreateTime=" + beginCreateTime +
+                ", endCreateTime=" + endCreateTime +
+                '}';
+    }
 }

@@ -25,7 +25,7 @@ import com.inxedu.os.edu.service.user.UserService;
  * @description 站内信的实现
  * @author www.inxedu.com
  */
-@Service
+@Service("msgReceiveService")
 public class MsgReceiveServiceImpl implements MsgReceiveService {
 	//logger
 	Logger logger = LoggerFactory.getLogger(MsgReceiveServiceImpl.class);

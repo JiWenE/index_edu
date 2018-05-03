@@ -5755,7 +5755,7 @@ vjs.Flash['onEvent'] = function(swfID, eventName){
   player.trigger(eventName);
 };
 
-// Log errors from the swf
+// log errors from the swf
 vjs.Flash['onError'] = function(swfID, err){
   var player = vjs.el(swfID)['player'];
   player.trigger('error');

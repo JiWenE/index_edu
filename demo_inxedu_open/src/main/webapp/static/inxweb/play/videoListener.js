@@ -18,69 +18,83 @@ function loadedHandler(){
     }
 }
 
-
+/**
+ * 播放事件处理
+ */
 function playHandler(){
     var userId = getLoginUser().userId;
     var eventName = '播放';
     var status = CKobject.getObjectById('ckplayer_a1').getStatus();
-    var timePlay = CKobject.getObjectById('ckplayer_a1').getStatus().time;
+    var timePlay = parseInt(CKobject.getObjectById('ckplayer_a1').getStatus().time);
+    var totalTime = parseInt(CKobject.getObjectById('ckplayer_a1').getStatus().totalTime);
     var timestamp = Date.parse(new Date());
-    var newDate = new Date();
-    newDate.setTime(timestamp);
+    // var newDate = new Date();
+    // newDate.setTime(timestamp);
     var fileLocation = CKobject.getObjectById('ckplayer_a1').getStatus().myflashvars.f;
 
     //console.log(status);
     console.log('播放了');
     //alert('播放了,' + '播放时间是');
 
-    addLog(logArray, userId, timePlay, eventName, newDate, fileLocation);
-    console.log(logArray);
+    addLog(logArray, userId, timePlay, totalTime, eventName, timestamp, fileLocation);
+
+    postLog(logArray);
+    console.log("发送完成！");
 }
 
+/**
+ * 暂停事件处理
+ */
 function pauseHandler() {
     var userId = getLoginUser().userId;
     var eventName = '暂停';
-    var totalTime = CKobject.getObjectById('ckplayer_a1').getStatus().totalTime;
-    var timeStop = CKobject.getObjectById('ckplayer_a1').getStatus().time;
+    var totalTime = parseInt(CKobject.getObjectById('ckplayer_a1').getStatus().totalTime);
+    var timeStop = parseInt(CKobject.getObjectById('ckplayer_a1').getStatus().time);
     var timestamp = Date.parse(new Date());
-    var newDate = new Date();
-    newDate.setTime(timestamp);
+    // var newDate = new Date();
+    // newDate.setTime(timestamp);
     var fileLocation = CKobject.getObjectById('ckplayer_a1').getStatus().myflashvars.f;
     console.log("暂停了");
-    addLog(logArray, userId, timeStop, eventName, newDate, fileLocation);
-    console.log(timeStop + '   ' + totalTime)
-    // console.log(logArray);
-    if(timeStop >= parseInt(totalTime)){
-        console.log('播放结束');
-        logArray.splice(0, logArray.length);
-        console.log(logArray);
-        console.log(getLoginUser());
-    }else {
-        console.log(logArray);
-    }
-    // alert('暂停了');
+    addLog(logArray, userId, timeStop, totalTime, eventName, timestamp, fileLocation);
+    postLog(logArray);
+    console.log("发送完成！");
+
+
+    // console.log(timeStop + '   ' + totalTime)
+    // // console.log(logArray);
+    // if(timeStop >= parseInt(totalTime)){
+    //     console.log('播放结束');
+    //     logArray.splice(0, logArray.length);
+    //     console.log(JSON.stringify(logArray));
+    //     console.log(getLoginUser());
+    // }else {
+    //     console.log(logArray);
+    // }
+    // // alert('暂停了');
 
 }
 
 /**
- * 日志接收类
+ * 日志发送类
  * @param userId
  * @param videoTime
+ * @param totalTime
  * @param eventName
  * @param creationTime
  * @param fileLocation
  * @constructor
  */
-function Log(userId, videoTime, eventName, creationTime, fileLocation) {
+function Log(userId, videoTime,  totalTime, eventName, creationTime, fileLocation) {
     this.userId = userId;
     this.videoTime = videoTime;
+    this.totalTime = totalTime;
     this.eventName = eventName;
     this.creationTime = creationTime;
     this.fileLocation = fileLocation;
 
     this.getUserId = function () {
         return this.userId;
-    }
+    };
     this.getVideoTime = function() {
         return this.videoTime;
     };
@@ -100,12 +114,13 @@ function Log(userId, videoTime, eventName, creationTime, fileLocation) {
  * @param userId
  * @param logArray
  * @param videoTime
+ * @param totalTime
  * @param eventName
  * @param creationTime
  * @param fileLocation
  */
-function addLog(logArray, userId, videoTime, eventName, creationTime, fileLocation) {
-    var log = new Log(userId, videoTime, eventName, creationTime, fileLocation);
+function addLog(logArray, userId, videoTime, totalTime, eventName, creationTime, fileLocation) {
+    var log = new Log(userId, videoTime, totalTime, eventName, creationTime, fileLocation);
     logArray.push(log);
 }
 
@@ -126,3 +141,24 @@ function addLog(logArray, userId, videoTime, eventName, creationTime, fileLocati
 //     });
 //     return user;
 // }
+/**
+ * 提交数据
+ * @param logArray
+ */
+function postLog(logArray){
+    postData = {
+        logArray: logArray
+    };
+
+    $.ajax({
+        type: "POST",
+        url: baselocation + "/video/log/add",
+        contentType : "application/json",
+        dataType: "json",
+        data:JSON.stringify(postData),
+        async: true
+    });
+
+    logArray.splice(0, logArray.length);
+
+}

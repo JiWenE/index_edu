@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 
 /**
@@ -35,4 +36,185 @@ public class Course implements Serializable{
     private String loseTime;//有效期:商品订单过期时间点
     
     private String studyPercent;//课程学习进度百分比
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    public int getCourseId() {
+        return courseId;
+    }
+
+    public void setCourseId(int courseId) {
+        this.courseId = courseId;
+    }
+
+    public String getCourseName() {
+        return courseName;
+    }
+
+    public void setCourseName(String courseName) {
+        this.courseName = courseName;
+    }
+
+    public int getIsavaliable() {
+        return isavaliable;
+    }
+
+    public void setIsavaliable(int isavaliable) {
+        this.isavaliable = isavaliable;
+    }
+
+    public int getSubjectId() {
+        return subjectId;
+    }
+
+    public void setSubjectId(int subjectId) {
+        this.subjectId = subjectId;
+    }
+
+    public String getSubjectLink() {
+        return subjectLink;
+    }
+
+    public void setSubjectLink(String subjectLink) {
+        this.subjectLink = subjectLink;
+    }
+
+    public Date getAddTime() {
+        return addTime;
+    }
+
+    public void setAddTime(Date addTime) {
+        this.addTime = addTime;
+    }
+
+    public BigDecimal getSourcePrice() {
+        return sourcePrice;
+    }
+
+    public void setSourcePrice(BigDecimal sourcePrice) {
+        this.sourcePrice = sourcePrice;
+    }
+
+    public BigDecimal getCurrentPrice() {
+        return currentPrice;
+    }
+
+    public void setCurrentPrice(BigDecimal currentPrice) {
+        this.currentPrice = currentPrice;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getContext() {
+        return context;
+    }
+
+    public void setContext(String context) {
+        this.context = context;
+    }
+
+    public int getLessionNum() {
+        return lessionNum;
+    }
+
+    public void setLessionNum(int lessionNum) {
+        this.lessionNum = lessionNum;
+    }
+
+    public String getLogo() {
+        return logo;
+    }
+
+    public void setLogo(String logo) {
+        this.logo = logo;
+    }
+
+    public Date getUpdateTime() {
+        return updateTime;
+    }
+
+    public void setUpdateTime(Date updateTime) {
+        this.updateTime = updateTime;
+    }
+
+    public int getPageBuycount() {
+        return pageBuycount;
+    }
+
+    public void setPageBuycount(int pageBuycount) {
+        this.pageBuycount = pageBuycount;
+    }
+
+    public int getPageViewcount() {
+        return pageViewcount;
+    }
+
+    public void setPageViewcount(int pageViewcount) {
+        this.pageViewcount = pageViewcount;
+    }
+
+    public Date getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(Date endTime) {
+        this.endTime = endTime;
+    }
+
+    public int getLoseType() {
+        return loseType;
+    }
+
+    public void setLoseType(int loseType) {
+        this.loseType = loseType;
+    }
+
+    public String getLoseTime() {
+        return loseTime;
+    }
+
+    public void setLoseTime(String loseTime) {
+        this.loseTime = loseTime;
+    }
+
+    public String getStudyPercent() {
+        return studyPercent;
+    }
+
+    public void setStudyPercent(String studyPercent) {
+        this.studyPercent = studyPercent;
+    }
+
+    @Override
+    public String toString() {
+        return "Course{" +
+                "courseId=" + courseId +
+                ", courseName='" + courseName + '\'' +
+                ", isavaliable=" + isavaliable +
+                ", subjectId=" + subjectId +
+                ", subjectLink='" + subjectLink + '\'' +
+                ", addTime=" + addTime +
+                ", sourcePrice=" + sourcePrice +
+                ", currentPrice=" + currentPrice +
+                ", title='" + title + '\'' +
+                ", context='" + context + '\'' +
+                ", lessionNum=" + lessionNum +
+                ", logo='" + logo + '\'' +
+                ", updateTime=" + updateTime +
+                ", pageBuycount=" + pageBuycount +
+                ", pageViewcount=" + pageViewcount +
+                ", endTime=" + endTime +
+                ", loseType=" + loseType +
+                ", loseTime='" + loseTime + '\'' +
+                ", studyPercent='" + studyPercent + '\'' +
+                '}';
+    }
 }

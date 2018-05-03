@@ -20,4 +20,67 @@ public class UserLoginLog implements Serializable{
 	private String osName;//操作系统
 	private String userAgent;//浏览器
 
+	public static long getSerialVersionUID() {
+		return serialVersionUID;
+	}
+
+	public int getLogId() {
+		return logId;
+	}
+
+	public void setLogId(int logId) {
+		this.logId = logId;
+	}
+
+	public Date getLoginTime() {
+		return loginTime;
+	}
+
+	public void setLoginTime(Date loginTime) {
+		this.loginTime = loginTime;
+	}
+
+	public String getIp() {
+		return ip;
+	}
+
+	public void setIp(String ip) {
+		this.ip = ip;
+	}
+
+	public int getUserId() {
+		return userId;
+	}
+
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
+
+	public String getOsName() {
+		return osName;
+	}
+
+	public void setOsName(String osName) {
+		this.osName = osName;
+	}
+
+	public String getUserAgent() {
+		return userAgent;
+	}
+
+	public void setUserAgent(String userAgent) {
+		this.userAgent = userAgent;
+	}
+
+	@Override
+	public String toString() {
+		return "UserLoginLog{" +
+				"logId=" + logId +
+				", loginTime=" + loginTime +
+				", ip='" + ip + '\'' +
+				", userId=" + userId +
+				", osName='" + osName + '\'' +
+				", userAgent='" + userAgent + '\'' +
+				'}';
+	}
 }

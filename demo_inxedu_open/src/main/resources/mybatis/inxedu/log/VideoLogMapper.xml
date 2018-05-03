@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="VideoLogDaoMapper">
+    <resultMap id="VideoLogResult" type="VideoLog">
+        <result property="id" column="ID"/>
+        <result property="userId" column="USER_ID"/>
+        <result property="videoId" column="VIDEO_ID"/>
+        <result property="playTime" column="PLAY_TIME"/>
+        <result property="totalTime" column="TOTAL_TIME"/>
+        <result property="status" column="STATUS"/>
+        <result property="creationTime" column="CREATION_TIME"/>
+        <result property="updateTime" column="UPDATE_TIME"/>
+    </resultMap>
+
+    <insert id="addLog" parameterType="VideoLog">
+        insert into video_log (USER_ID, VIDEO_ID, PLAY_TIME, TOTAL_TIME, STATUS, CREATION_TIME, UPDATE_TIME)
+        values(#{userId},#{videoId},#{playTime},#{totalTime},#{status},#{creationTime},now())
+    </insert>
+
+    <update id="deletedById" parameterType="Long">
+        UPDATE video_log SET DELETED = 1, UPDATE_TIME = now()
+        WHERE ID = #{id}
+    </update>
+
+
+</mapper>
