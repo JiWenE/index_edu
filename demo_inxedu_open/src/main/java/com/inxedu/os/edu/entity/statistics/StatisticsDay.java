@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * @author www.inxedu.com
@@ -48,4 +49,86 @@ public class StatisticsDay implements Serializable{
      * 每日课程数
      */
     private Long dailyCourseNumber;
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Date getStatisticsTime() {
+        return statisticsTime;
+    }
+
+    public void setStatisticsTime(Date statisticsTime) {
+        this.statisticsTime = statisticsTime;
+    }
+
+    public Long getLoginNum() {
+        return loginNum;
+    }
+
+    public void setLoginNum(Long loginNum) {
+        this.loginNum = loginNum;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public Long getRegisteredNum() {
+        return registeredNum;
+    }
+
+    public void setRegisteredNum(Long registeredNum) {
+        this.registeredNum = registeredNum;
+    }
+
+    public Long getVideoViewingNum() {
+        return videoViewingNum;
+    }
+
+    public void setVideoViewingNum(Long videoViewingNum) {
+        this.videoViewingNum = videoViewingNum;
+    }
+
+    public Long getDailyUserNumber() {
+        return dailyUserNumber;
+    }
+
+    public void setDailyUserNumber(Long dailyUserNumber) {
+        this.dailyUserNumber = dailyUserNumber;
+    }
+
+    public Long getDailyCourseNumber() {
+        return dailyCourseNumber;
+    }
+
+    public void setDailyCourseNumber(Long dailyCourseNumber) {
+        this.dailyCourseNumber = dailyCourseNumber;
+    }
+
+    @Override
+    public String toString() {
+        return "StatisticsDay{" +
+                "id=" + id +
+                ", statisticsTime=" + statisticsTime +
+                ", loginNum=" + loginNum +
+                ", createTime=" + createTime +
+                ", registeredNum=" + registeredNum +
+                ", videoViewingNum=" + videoViewingNum +
+                ", dailyUserNumber=" + dailyUserNumber +
+                ", dailyCourseNumber=" + dailyCourseNumber +
+                '}';
+    }
 }

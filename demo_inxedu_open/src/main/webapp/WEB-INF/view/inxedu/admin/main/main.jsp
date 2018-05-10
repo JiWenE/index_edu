@@ -148,22 +148,22 @@
 </script>--%>
 </head>
 <body>
-<div class="Notice">
-	<div class="Noti-big pr">
-		<div class="not-warp" id="scroll_div">
-			<div id="" class="not-warp-in">
-				<div class="fsize12 f-fM p-txt" id="scroll_begin">
-					<tt class="fsize14 f-fM vam">【温馨提示】</tt>
-					<tt class="fsize14 f-fM vam">开源版本切勿商务哦！别辜负了我们善良的初衷，不然因酷小伙伴可是要暴躁的哟。更多功能欢迎购买商业版。</tt>
-				</div>
-				<div class="fsize12 f-fM p-txt" id="scroll_end"></div>
-			</div>
-		</div>
-		<a href="javascript: void(0)" title="关闭" class="not-close">
-			<img src="${ctx}/static/admin/images/close-gg.png">
-		</a>
-	</div>
-</div>
+<%--<div class="Notice">--%>
+	<%--<div class="Noti-big pr">--%>
+		<%--<div class="not-warp" id="scroll_div">--%>
+			<%--<div id="" class="not-warp-in">--%>
+				<%--<div class="fsize12 f-fM p-txt" id="scroll_begin">--%>
+					<%--<tt class="fsize14 f-fM vam">【温馨提示】</tt>--%>
+					<%--<tt class="fsize14 f-fM vam">开源版本切勿商务哦！别辜负了我们善良的初衷，不然因酷小伙伴可是要暴躁的哟。更多功能欢迎购买商业版。</tt>--%>
+				<%--</div>--%>
+				<%--<div class="fsize12 f-fM p-txt" id="scroll_end"></div>--%>
+			<%--</div>--%>
+		<%--</div>--%>
+		<%--<a href="javascript: void(0)" title="关闭" class="not-close">--%>
+			<%--<img src="${ctx}/static/admin/images/close-gg.png">--%>
+		<%--</a>--%>
+	<%--</div>--%>
+<%--</div>--%>
 	<!-- Container -->
 	<div class="tHeader headerimg">
 		<div>
@@ -248,17 +248,17 @@
 	<!-- End of Container -->
 
 	<!-- Footer -->
-	<div id="footer">
-		<p class="mid">${websitemap.web.copyright}</p>
-		<p class="mid">
-			Powered By <a target="_blank" href="http://demo1.inxedu.com/" style="color: #666;">${websitemap.web.company}</a>
-		</p>
-	</div>
-		<script type="text/javascript">
-			$(function () {
-                ScrollImgLeft();
-            })
-		</script>
+	<%--<div id="footer">--%>
+		<%--<p class="mid">${websitemap.web.copyright}</p>--%>
+		<%--<p class="mid">--%>
+			<%--Powered By <a target="_blank" href="http://demo1.inxedu.com/" style="color: #666;">${websitemap.web.company}</a>--%>
+		<%--</p>--%>
+	<%--</div>--%>
+		<%--<script type="text/javascript">--%>
+			<%--$(function () {--%>
+                <%--ScrollImgLeft();--%>
+            <%--})--%>
+		<%--</script>--%>
 </body>
 </html>
 

@@ -1,6 +1,7 @@
 package com.inxedu.os.edu.dao.course;
 
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -63,5 +64,23 @@ public class CourseKpointDaoImpl extends GenericDaoImpl implements CourseKpointD
 	@Override
 	public int getVideoIdByUrl(String url) {
 		return this.selectOne("CourseKpointMapper.getVideoIdByUrl", url);
+	}
+
+	@Override
+	public void addEventCountById(int id) {
+		this.update("CourseKpointMapper.addEventCountById", id);
+	}
+
+	@Override
+	public int getMaxEventCountByCourse(int courseId) {
+		return this.selectOne("CourseKpointMapper.getMaxEventCountByCourse", courseId);
+	}
+
+	@Override
+	public CourseKpoint findNameByInfo(int eventCount, int courseId) {
+		Map<String,Integer> map = new HashMap<String, Integer>();
+		map.put("count", eventCount);
+		map.put("id", courseId);
+		return this.selectOne("CourseKpointMapper.findNameByInfo",map);
 	}
 }

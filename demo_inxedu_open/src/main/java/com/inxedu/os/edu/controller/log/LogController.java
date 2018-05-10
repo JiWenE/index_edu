@@ -19,7 +19,6 @@ public class LogController {
     private VideoLogService videoLogService;
 
     @RequestMapping(value = "/log/add", method = RequestMethod.POST, consumes = "application/json")
-    @ResponseBody
     public void addLog(@RequestBody LogDto logDto){
         //todo = 增加log
         videoLogService.addLog(logDto.getLogArray());
@@ -29,4 +28,6 @@ public class LogController {
     public void deletedLog(@PathVariable Long id){
         videoLogService.setDeleted(id);
     }
+
+
 }

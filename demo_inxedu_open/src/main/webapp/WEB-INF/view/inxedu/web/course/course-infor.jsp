@@ -165,7 +165,7 @@
 																>
 																	<c:forEach items="${parentKpoint.kpointList}" var="sonKpoint">
 																		<li class="lh-menu-second ml30"><a href="javascript:void(0)" <%-- onclick="playVideo('${sonKpoint.videoUrl }',this)" --%> onclick="getPlayerHtml(${sonKpoint.kpointId },${sonKpoint.free },this)" title="">
-																				<span class="fr"> 
+																				<span class="fr">
 																					<c:if test="${sonKpoint.free==1 }">
 																						<tt class="free-icon vam mr10">免费试听</tt>
 																					</c:if>
@@ -185,7 +185,7 @@
 															<li class="lh-menu-stair">
 																<ul class="lh-menu-ol no-parent-node">
 																	<li class="lh-menu-second"><a title="" <%-- onclick="playVideo('${parentKpoint.videoUrl }',this)" --%> onclick="getPlayerHtml(${parentKpoint.kpointId },${parentKpoint.free },this)" href="javascript:void(0)">
-																			<span class="fr"> 
+																			<span class="fr">
 																				<c:if test="${parentKpoint.free==1 }">
 																					<tt class="free-icon vam mr10">免费试听</tt>
 																				</c:if>

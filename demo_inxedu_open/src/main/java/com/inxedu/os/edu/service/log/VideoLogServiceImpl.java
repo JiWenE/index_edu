@@ -37,6 +37,7 @@ public class VideoLogServiceImpl implements VideoLogService{
                 videoLog.setStatus(VideoLog.STATUS_PAUSE);
             }
             videoLogDao.addLog(videoLog);
+            courseKpointDao.addEventCountById(videoId);
         }
     }
 

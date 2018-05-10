@@ -18,5 +18,6 @@ public class CourseDto extends Course implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private String subjectName;
 	private int recommendId;//推荐类型ID
+	private String majorSection;
 	private List<Map<String,Object>> teacherList;
 }

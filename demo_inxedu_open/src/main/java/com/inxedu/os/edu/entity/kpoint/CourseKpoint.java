@@ -46,6 +46,7 @@ public class CourseKpoint implements Serializable{
     private List<CourseKpoint> kpointList=new ArrayList<CourseKpoint>();
     private String fileType;//节点文件格式
     private String content;//文本内容
+    private int eventCount; // 事件总数
 
     public static long getSerialVersionUID() {
         return serialVersionUID;
@@ -177,5 +178,13 @@ public class CourseKpoint implements Serializable{
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public int getEventCount() {
+        return eventCount;
+    }
+
+    public void setEventCount(int eventCount) {
+        this.eventCount = eventCount;
     }
 }

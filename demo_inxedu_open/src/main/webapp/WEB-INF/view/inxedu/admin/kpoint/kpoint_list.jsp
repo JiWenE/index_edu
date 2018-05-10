@@ -38,7 +38,7 @@
             $("#"+fileupload).uploadify({
                 'uploader' : '/static/common/uploadify/uploadify.swf', //上传控件的主体文件，flash控件  默认值='uploadify.swf'
                 'script'  :'<%=uploadServerUrl%>/video/uploadvideo',
-                'scriptData':{"fileType":"mp4","param":"video"},
+                'scriptData':{"fileType":"mp4,flv","param":"video"},
                 'queueID' : fileQueue, //文件队列ID
                 'fileDataName' : 'uploadfile', //您的文件在上传服务器脚本阵列的名称
                 'auto' : true, //选定文件后是否自动上传
@@ -51,7 +51,7 @@
                 'sizeLimit' : 5120000000,//控制上传文件的大小
                 'queueSizeLimit' : 3,//限制在一次队列中的次数（可选定几个文件）
                 'fileDesc' : '支持格式:mp4.',//出现在上传对话框中的文件类型描述
-                'fileExt' : '*.MP4;*.mp4;',//支持的格式，启用本项时需同时声明fileDesc
+                'fileExt' : '*.flv;*.MP4;*.mp4;',//支持的格式，启用本项时需同时声明fileDesc
                 'folder' : '/upload',//您想将文件保存到的路径
                 'cancelImg' : '/static/common/uploadify/cancel.png',
                 onSelect : function(event, queueID,fileObj) {

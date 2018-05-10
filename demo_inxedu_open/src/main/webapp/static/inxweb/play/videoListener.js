@@ -124,23 +124,6 @@ function addLog(logArray, userId, videoTime, totalTime, eventName, creationTime,
     logArray.push(log);
 }
 
-// /**
-//  * 获取登录学员
-//  * @returns {*}
-//  */
-// function getLoginUser(){
-//     var user = null;
-//     $.ajax({
-//         url:baselocation+'/uc/getloginUser',
-//         type:'post',
-//         async:false,
-//         dataType:'json',
-//         success:function(result){
-//             user = result.entity;
-//         }
-//     });
-//     return user;
-// }
 /**
  * 提交数据
  * @param logArray
@@ -156,7 +139,13 @@ function postLog(logArray){
         contentType : "application/json",
         dataType: "json",
         data:JSON.stringify(postData),
-        async: true
+        async: true,
+        success:function(){
+            console.log("success");
+        },
+        error:function(){
+            console.log("error");
+        }
     });
 
     logArray.splice(0, logArray.length);

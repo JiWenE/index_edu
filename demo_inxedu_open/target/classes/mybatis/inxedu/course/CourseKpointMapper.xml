@@ -4,21 +4,22 @@
 <mapper namespace="CourseKpointMapper">
 
 	<resultMap id="CourseKpointResult" type="CourseKpoint">
-	<result property="kpointId" column="KPOINT_ID"/>
-	<result property="courseId" column="COURSE_ID"/>
-	<result property="name" column="NAME"/>
-	<result property="parentId" column="PARENT_ID"/>
-	<result property="addTime" column="ADD_TIME"/>
-	<result property="sort" column="SORT"/>
-	<result property="playCount" column="PLAY_COUNT"/>
-	<result property="free" column="IS_FREE"/>
-	<result property="videoUrl" column="VIDEO_URL"/>
-	<result property="teacherId" column="TEACHER_ID"/>
-	<result property="playTime" column="play_time"/>
-	<result property="kpointType" column="KPOINT_TYPE"/>
-	<result property="videoType" column="VIDEO_TYPE"/>
-	<result property="fileType" column="FILE_TYPE"/>
-	<result property="content" column="CONTENT"/>
+		<result property="kpointId" column="KPOINT_ID"/>
+		<result property="courseId" column="COURSE_ID"/>
+		<result property="name" column="NAME"/>
+		<result property="parentId" column="PARENT_ID"/>
+		<result property="addTime" column="ADD_TIME"/>
+		<result property="sort" column="SORT"/>
+		<result property="playCount" column="PLAY_COUNT"/>
+		<result property="free" column="IS_FREE"/>
+		<result property="videoUrl" column="VIDEO_URL"/>
+		<result property="teacherId" column="TEACHER_ID"/>
+		<result property="playTime" column="play_time"/>
+		<result property="kpointType" column="KPOINT_TYPE"/>
+		<result property="videoType" column="VIDEO_TYPE"/>
+		<result property="fileType" column="FILE_TYPE"/>
+		<result property="content" column="CONTENT"/>
+		<result property="eventCount" column="EVENT_COUNT"/>
 	</resultMap>
 	
 	<sql id="edu_course_kpoint_columns">
@@ -124,5 +125,31 @@
 		FROM edu_course_kpoint 
 	where 
 		edu_course_kpoint.COURSE_ID=#{value} and edu_course_kpoint.KPOINT_TYPE=1
+	</select>
+
+	<!--通过文件路径获取id-->
+	<select id="getVideoIdByUrl" parameterType="String" resultType="int">
+		SELECT edu_course_kpoint.KPOINT_ID
+		FROM edu_course_kpoint
+		WHERE
+		edu_course_kpoint.VIDEO_URL = #{value}
+	</select>
+
+	<!--增加事件数-->
+	<update id="addEventCountById" parameterType="int">
+		UPDATE edu_course_kpoint SET edu_course_kpoint.EVENT_COUNT = edu_course_kpoint.EVENT_COUNT + 1
+		WHERE edu_course_kpoint.KPOINT_ID = #{value}
+	</update>
+
+	<!--获取最大事件数的课程-->
+	<select id="getMaxEventCountByCourse" parameterType="int" resultType="int">
+		SELECT MAX(EVENT_COUNT) FROM edu_course_kpoint
+		where edu_course_kpoint.COURSE_ID = #{value}
+		LIMIT 1
+	</select>
+	
+	<select id="findNameByInfo" parameterType="java.util.Map" resultType="CourseKpoint">
+		SELECT edu_course_kpoint.NAME FROM edu_course_kpoint
+		WHERE edu_course_kpoint.EVENT_COUNT = #{count} and edu_course_kpoint.COURSE_ID = #{id}
 	</select>
 </mapper>

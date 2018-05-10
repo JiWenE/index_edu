@@ -4,9 +4,11 @@ import com.inxedu.os.common.cache.EHCacheUtil;
 import com.inxedu.os.common.constants.CacheConstans;
 import com.inxedu.os.common.entity.PageEntity;
 import com.inxedu.os.edu.dao.course.CourseDao;
+import com.inxedu.os.edu.dao.course.CourseKpointDao;
 import com.inxedu.os.edu.entity.course.Course;
 import com.inxedu.os.edu.entity.course.CourseDto;
 import com.inxedu.os.edu.entity.course.QueryCourse;
+import com.inxedu.os.edu.entity.kpoint.CourseKpoint;
 import com.inxedu.os.edu.service.course.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,6 +27,8 @@ public class CourseServiceImpl implements CourseService {
 
 	@Autowired
 	private CourseDao courseDao;
+	@Autowired
+	private CourseKpointDao courseKpointDao;
 
 	public int addCourse(Course course) {
 		return courseDao.addCourse(course);
@@ -122,5 +126,24 @@ public class CourseServiceImpl implements CourseService {
 	 */
 	public void updateCourseCount(String type,int courseId){
 		this.courseDao.updateCourseCount(type,courseId);
+	}
+
+	@Override
+	public List<CourseDto> getCourseList(QueryCourse query, PageEntity page) {
+		List<CourseDto> courseDtoList = courseDao.queryCourseListPage(query, page);
+		for (CourseDto courseDto: courseDtoList) {
+			int courseId = courseDto.getCourseId();
+			Integer max = courseKpointDao.getMaxEventCountByCourse(courseId);
+			CourseKpoint courseKpoint = courseKpointDao.findNameByInfo(max,courseId);
+//			int max = courseKpoint.getEventCount();
+//			CourseKpoint courseKpoint2 = courseKpointDao.findNameByInfo(max,courseId);
+//			String name = courseKpoint2.getName();
+			if(courseKpoint==null) {
+				courseDto.setMajorSection("无视频节点");
+			}else{
+				courseDto.setMajorSection(courseKpoint.getName());
+			}
+		}
+		return courseDtoList;
 	}
 }

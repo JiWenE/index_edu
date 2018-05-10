@@ -19,10 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.net.URLEncoder;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * CourseKpoint 课程章节 管理
@@ -35,6 +32,7 @@ public class AdminKpointController extends BaseController {
 
 	// 章节列表
 	private static final String kpointList = getViewPath("/admin/kpoint/kpoint_list");// 章节列表
+	private static final String kpointInfo = getViewPath("/admin/kpoint/kpoint_info");
 
     // 绑定变量名字和属性，参数封装进类
     @InitBinder("courseKpoint")
@@ -199,6 +197,33 @@ public class AdminKpointController extends BaseController {
 		}
     	return json;
     }
+
+    //
+	@RequestMapping(value = "/kpoint/info/{courseId}")
+	public ModelAndView showKpointInfo(HttpServletRequest request, @PathVariable("courseId") int courseId) {
+		ModelAndView model = new ModelAndView();
+		model.setViewName(kpointInfo);
+		List<CourseKpoint> parentKpointList = new ArrayList<CourseKpoint>();
+		List<CourseKpoint> kpointList = courseKpointService.queryCourseKpointByCourseId(courseId);
+		if (kpointList != null && kpointList.size() > 0) {
+			//遍历 一级目录
+			for (CourseKpoint temp : kpointList) {
+				if (temp.getParentId() == 0) {
+					parentKpointList.add(temp);
+				}
+			}
+			//遍历 获取二级目录
+			for (CourseKpoint tempParent : parentKpointList) {
+				for (CourseKpoint temp : kpointList) {
+					if (temp.getParentId() == tempParent.getKpointId()) {
+						tempParent.getKpointList().add(temp);
+					}
+				}
+			}
+			model.addObject("parentKpointList", parentKpointList);
+		}
+		return model;
+	}
 
 
 }

@@ -121,5 +121,7 @@ public interface CourseService {
 	 */
 	public void updateCourseCount(String type,int courseId);
 
+	public List<CourseDto> getCourseList(QueryCourse query,PageEntity page);
+
 
 }

@@ -61,4 +61,10 @@ public interface CourseKpointDao {
      */
     public int getVideoIdByUrl(String url);
 
+    public  void addEventCountById(int id);
+
+    public int getMaxEventCountByCourse(int courseId);
+
+    public CourseKpoint findNameByInfo(int eventCount, int courseId);
+
 }

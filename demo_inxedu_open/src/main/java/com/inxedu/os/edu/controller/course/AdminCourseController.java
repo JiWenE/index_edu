@@ -4,6 +4,7 @@ package com.inxedu.os.edu.controller.course;
 import com.inxedu.os.common.controller.BaseController;
 import com.inxedu.os.common.entity.PageEntity;
 import com.inxedu.os.common.util.WebUtils;
+import com.inxedu.os.edu.dao.course.CourseKpointDao;
 import com.inxedu.os.edu.entity.course.Course;
 import com.inxedu.os.edu.entity.course.CourseDto;
 import com.inxedu.os.edu.entity.course.QueryCourse;
@@ -42,6 +43,7 @@ public class AdminCourseController extends BaseController {
 	private static final String toAddCourse = getViewPath("/admin/course/add_course");//添加课程
     private static final String showRecommendCourseList = getViewPath("/admin/course/course_recommend_list");//课程列表(推荐课程)
 	private static final String update_course=getViewPath("/admin/course/update_course");//更新课程
+	private static final String showCourseStatistics = getViewPath("/admin/course/course_statistics");//课程列表
 
 	@Autowired
 	private CourseService courseService;
@@ -262,4 +264,38 @@ public class AdminCourseController extends BaseController {
 		}
     	return model;
     }
+
+    //统计信息展示
+
+	/**
+	 * 课程统计信息
+	 * @param request
+	 * @param page
+	 * @param queryCourse
+	 * @return
+	 */
+	@RequestMapping("/cou/statistics")
+	public ModelAndView showCoursestatistics(HttpServletRequest request, @ModelAttribute("page") PageEntity page, @ModelAttribute("queryCourse") QueryCourse queryCourse) {
+		ModelAndView model = new ModelAndView();
+		try {
+			page.setPageSize(14);
+			model.setViewName(showCourseStatistics);
+			//queryCourse.setIsavaliable(1);//上架
+			//查询课程
+			List<CourseDto> courseList = courseService.getCourseList(queryCourse, page);
+			model.addObject("page", page);
+			model.addObject("courseList", courseList);
+			model.addObject("queryCourse", queryCourse);
+			//查询专业
+			QuerySubject querySubject = new QuerySubject();
+			List<Subject> subjectList = subjectService.getSubjectList(querySubject);
+			model.addObject("subjectList", gson.toJson(subjectList));
+			//保存 当前请求到session ，下次返回
+			request.getSession().setAttribute("courseListUri", WebUtils.getServletRequestUriParms(request));
+		} catch (Exception e) {
+			model.setViewName(this.setExceptionRequest(request, e));
+			logger.error("CourseController.showCourseList", e);
+		}
+		return model;
+	}
 }
